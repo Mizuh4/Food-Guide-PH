@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Counter</title>
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+    <script>
+
+        let counter = 0;
+
+        function count() {
+            counter++;
+            document.querySelector('h1').innerHTML = counter;
+
+            if (counter % 10 === 0) {
+                alert(`Count is now ${counter}`);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('button').onclick = count;
+            //document.querySelector('button').addEventListener('click', count());
+        });
+
+    </script>
+</head>
+<body>
+    <h1>0<h1>
+    <!--<button onclick="count()">count</button>-->
+    <button>count</button>
+</body>
+</html>
