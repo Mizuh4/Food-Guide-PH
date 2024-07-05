@@ -7,10 +7,21 @@
             color: blue;
         }
     </style>
+    <script>
+        function hello() {
+            const heading = document.querySelector('h1');
+            if (heading.innerHTML === 'Hello!') {
+                heading.innerHTML = 'Goodbye!';
+            } else {
+                heading.innerHTML = 'Hello!';
+            }
+            
+        }
+    </script>
 </head>
 <body>
-    <h1>Welcome to my Website!</h1>
+    <h1>Hello!</h1>
     <h2>Hi<h2>
-    Hello, World!
+    <button onclick="hello()">Click Here</button>
 </body>
 </html>
