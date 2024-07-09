@@ -2,13 +2,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from .models import Recipe
 
 # Create your views here.
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
     return render(request, "recipes/index.html", {
-
+        "regions": Recipe.REGIONS.values()
     })
 
 def login_view(request):
@@ -26,8 +27,8 @@ def login_view(request):
     return render(request, "recipes/login.html")
 
 def logout_view(request):
-    return render(request, "recipes/logout.html", {
-        
+    return render(request, "recipes/login.html", {
+        "message": "Successfully Logged Out"
     })
 
 def signup_view(request):
