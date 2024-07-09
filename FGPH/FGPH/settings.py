@@ -31,16 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'recipes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'recipes'
 ]
 
-#AUTH_USER_MODEL = "recipes.models"
+AUTH_USER_MODEL = 'recipes.MyUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
