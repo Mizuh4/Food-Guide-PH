@@ -19,24 +19,28 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous">
-
     </script>
+
+    <script
+        src="{% static 'recipes/FGPH.js' %}">
+    </script>
+
 </head>
 <body class="bg-black">
     <nav class="navbar bg-dark-subtle text-white">
         <div class="container-fluid">
-            <a href="AuthenticRecipes.html"><img src="{% static 'images/logo.png' %}" class="rounded float-center position-relative m-2" width="100px"><label class="text-black">FOOD GUIDE PH</label></a> 
+            <a href="{% url 'recipes:home' %}"><img src="{% static 'images/logo.png' %}" class="rounded float-center position-relative m-2" width="100px"><label class="text-black">FOOD GUIDE PH</label></a> 
                 <ul class="nav nav-underline ms-4 text-black">
                     <li class="nav-item">
-                        <a class="nav-link active text-black" aria-current="page" href="{% url 'recipes:index' %}">Authentic Recipes</a>
+                        <a id="authentic" class="nav-link text-black">Authentic Recipes</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="Signature Recipes.html">Signature Recipes</a>
+                        <a id="signature" class="nav-link text-black">Signature Recipes</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="Profile.html">Profile</a>
+                        <a id="profile" class="nav-link text-black" href="{% url 'recipes:profile' %}">Profile</a>
                     </li>  
                         
                     <form class="d-flex" role="search">
@@ -49,3 +53,8 @@
     {% endblock %}
 </body>
 </html>
+
+<!--
+active
+aria-current="page"
+-->

@@ -1,19 +1,19 @@
-{% extends 'recipes/RegLayout.html' %}
+{% extends 'recipes/layoutReg.html' %}
 {% load static %}
 
 {% block body %}
-<section>
-        <header class="lead text-start  bg-dark-subtle">
-            <img src="{% static 'images/logo.png' %}" 
-                class="rounded float-center position-relative m-2" 
-                width="100px">
-        </header>
-        {% if message %}
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <div>{{ message }}</div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endif %}
+<section class="text-white">
+    <header class="lead text-start  bg-dark-subtle">
+        <img src="{% static 'images/logo.png' %}" 
+            class="rounded float-center position-relative m-2" 
+            width="100px">
+    </header>
+    {% if message %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div>{{ message }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
 
     <div class="container fluid text-white">
         <div class="lead text-center">

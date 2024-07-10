@@ -8,8 +8,20 @@ from .models import Recipe
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
-    return render(request, "recipes/index.html", {
+    return HttpResponseRedirect(reverse("recipes:home"))
+    
+def home(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("recipes:login"))
+    return render(request, "recipes/home.html", {
         "regions": Recipe.REGIONS.values()
+    })
+
+def profile(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("recipes:login"))
+    return render(request, "recipes/profile.html", {
+        "name": request.user.username
     })
 
 def login_view(request):
@@ -27,6 +39,7 @@ def login_view(request):
     return render(request, "recipes/login.html")
 
 def logout_view(request):
+    logout(request)
     return render(request, "recipes/login.html", {
         "message": "Successfully Logged Out"
     })

@@ -1,0 +1,26 @@
+{% extends 'recipes/layout.html' %}
+
+{% block body %}
+<section class="text-white">
+    <!--<div class="btn-group" role="group" aria-label="Basic radio toggle button group">-->
+        <div class="scrollmenu">
+            {% for region in regions %}
+                <!--<li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#">{{ region }}</a></li>-->
+                <a href="#">{{ region }}</a>
+            {% endfor %}
+        </div>
+        <div class="text-end">
+            <button class="btn btn-secondary dropdown-toggle lead text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filters</button>
+            <ul class="dropdown-menu ms-2">
+                <li class="ms-2"><a class="dropdown-item" href="#"></a>Popular</li>
+                <li class="ms-2"><a class="dropdown-item" href="#"></a>Recommended</li>
+            </ul>
+        </div>
+    <!--</div>-->
+
+    <div class="lead text-center ">
+        <label >Top Categories</label>
+    </div>
+
+</section>
+{% endblock %}
