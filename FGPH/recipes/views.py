@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Recipe
@@ -8,21 +8,32 @@ from .models import Recipe
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
-    return HttpResponseRedirect(reverse("recipes:home"))
-    
-def home(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("recipes:login"))
-    return render(request, "recipes/home.html", {
-        "regions": Recipe.REGIONS.values()
-    })
+    display = "authentic"   
+    return HttpResponseRedirect(reverse("recipes:home", args=(display,)))
 
-def profile(request):
+
+def home(request, display):
+    print(display)
+    print(type(display))
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
-    return render(request, "recipes/profile.html", {
-        "name": request.user.username
-    })
+
+    if display == "authentic":
+        return render(request, "recipes/section.html", {
+            "display": "authentic",
+            "name": request.user.username,
+            "regions": Recipe.REGIONS.values()
+        })
+    
+    elif display == "signature":
+        return render(request, "recipes/section.html", {
+            "display": "signature",
+            "name": request.user.username,
+            "regions": Recipe.REGIONS.values()
+        })
+    
+    else:
+        raise Http404("LOLOLOL")
 
 def login_view(request):
     if request.method == "POST":
@@ -46,4 +57,3 @@ def logout_view(request):
 
 def signup_view(request):
     pass
-    #return HttpResponse("Signup View")

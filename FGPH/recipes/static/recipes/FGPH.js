@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('#authentic').onclick = () => {
         document.querySelector('#authentic').classList.add("active");
         document.querySelector('#signature').classList.remove("active");
@@ -16,4 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('#signature').classList.remove("active");
         document.querySelector('#profile').classList.add("active");
     }
-})
+
+
+})*/
