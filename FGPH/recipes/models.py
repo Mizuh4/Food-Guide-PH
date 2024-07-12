@@ -101,4 +101,4 @@ class Recipe(models.Model):
     ingredients = models.JSONField()
 
     def __str__(self):
-        return f"{self.name}, desc: {self.description}, region: {self.region}, author: {self.author}, ingredients: {self.ingredients}"
+        return f"{self.name}, description: {self.description}, region: {self.region}, author: {self.author}, ingredients: {self.ingredients}"

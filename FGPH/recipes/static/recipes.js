@@ -1,3 +1,8 @@
+window.onpopstate = function(event) {
+    console.log(event.state.section);
+    showSection(event.state.section);
+}
+
 function showPage(page) {
     console.log("From showPage: " + page);
     
