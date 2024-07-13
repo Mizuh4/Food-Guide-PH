@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Recipe
@@ -8,32 +9,29 @@ from .models import Recipe
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
-    display = "authentic"   
-    return HttpResponseRedirect(reverse("recipes:home", args=(display,)))
+    return render(request, "recipes/home.html", {
+            "display": "authentic",
+            "name": request.user.username,
+            "regions": Recipe.REGIONS.values()
+    })
 
-
-def home(request, display):
-    print(display)
+def display(request, display):
+    print("from display function: " + display)
     print(type(display))
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
-
-    if display == "authentic":
-        return render(request, "recipes/section.html", {
+    
+    if display:
+        content = render(request, f"recipes/{display}.html", {
             "display": "authentic",
             "name": request.user.username,
             "regions": Recipe.REGIONS.values()
         })
-    
-    elif display == "signature":
-        return render(request, "recipes/section.html", {
-            "display": "signature",
-            "name": request.user.username,
-            "regions": Recipe.REGIONS.values()
-        })
-    
+        print(type(content))
+        return content
+
     else:
-        raise Http404("LOLOLOL")
+        raise Http404("No such display")
 
 def login_view(request):
     if request.method == "POST":

@@ -1,7 +1,4 @@
 from django.db import models
-
-
-from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class MyUserManager(BaseUserManager):
@@ -46,6 +43,8 @@ class MyUser(AbstractBaseUser):
         unique=True,
     )
     username = models.CharField(max_length=64)
+    first_name = models.CharField(max_length=64, default="")
+    last_name = models.CharField(max_length=64, default="")
     date_of_birth = models.DateField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -75,12 +74,6 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 
 # Create your models here.
-class Author(models.Model):
-    first = models.CharField(max_length=64)
-    last = models.CharField(max_length=64)
-
-    def __str__(self):
-        return f"{self.first} {self.last}"
 
 class Recipe(models.Model):
     REGIONS = {
@@ -96,9 +89,16 @@ class Recipe(models.Model):
 
     name = models.CharField(max_length=171)
     description = models.CharField(max_length=750)
-    region = models.CharField(max_length=10, choices=REGIONS)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="recipes")
-    ingredients = models.JSONField()
+    region = models.CharField(max_length=64, choices=REGIONS)
+    author = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="recipes")
+    ingredients = models.JSONField(blank=True)
 
     def __str__(self):
-        return f"{self.name}, description: {self.description}, region: {self.region}, author: {self.author}, ingredients: {self.ingredients}"
+        return f"{self.name}, description: {self.description}, region: {self.region}, author: {self.author.username}, ingredients: {self.ingredients}"
+'''
+recipe = Recipe.objects.all()
+recipe = Recipe.objects.first()
+user = MyUser.objects.get(email="gavila_02@mtc.edu.ph")
+region = Recipe.REGIONS["RegionI"]
+recipe = Recipe(name="Pinakbet", description="Has vegetables.", region=region, author=user, ingredients="")
+'''

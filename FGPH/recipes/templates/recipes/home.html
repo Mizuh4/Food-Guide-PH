@@ -22,15 +22,15 @@
     <!--Static Files-->
     <link 
         rel="stylesheet" 
-        href="{% static 'recipes/styles.css' %}">
+        href="{% static 'styles.css' %}">
     <script
-        src="{% static 'recipes/FGPH.js' %}">
+        src="{% static 'FGPH.js' %}">
     </script>
     <!---->
 
     <!--CS50 Lecture-->
     <script
-        src="{% static 'recipes/recipes.js' %}">
+        src="{% static 'recipes.js' %}">
     </script>
     <style>
         section {
@@ -43,6 +43,8 @@
         const data = document.currentScript.dataset;
         const display = data.display;
         console.log("From script tag: " + display);
+        
+        showSection(display)
     </script>
 
 </head>
@@ -80,8 +82,6 @@
 </div>
 
 <div id="content">
-    {% block body %}
-    {% endblock %}
 </div>
 
 </body>

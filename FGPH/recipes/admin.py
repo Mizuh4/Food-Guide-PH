@@ -1,9 +1,3 @@
-from django.contrib import admin
-
-
-from django.contrib.auth.admin import UserAdmin
-from .models import Author, Recipe #User
-
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -11,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
-from .models import MyUser
+from .models import Recipe, MyUser
 
 
 class UserCreationForm(forms.ModelForm):
@@ -54,7 +48,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ["email", "username", "password", "date_of_birth", "is_active", "is_admin"]
+        fields = ["email", "username", "password", "first_name", "last_name", "date_of_birth", "is_active", "is_admin"]
 
 
 class UserAdmin(BaseUserAdmin):
@@ -65,12 +59,12 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ["email", "username", "date_of_birth", "is_admin"]
+    list_display = ["email", "username", "first_name", "last_name", "date_of_birth", "is_admin"]
     list_filter = ["is_admin"]
     fieldsets = [
         (None, {"fields": ["email", "password"]}),
         ("Username", {"fields": ["username"]}),
-        ("Personal info", {"fields": ["date_of_birth", ]}),
+        ("Personal info", {"fields": ["first_name", "last_name", "date_of_birth"]}),
         ("Permissions", {"fields": ["is_admin"]}),
     ]
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -80,7 +74,7 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 "classes": ["wide"],
-                "fields": ["email", "username", "date_of_birth", "password1", "password2"],
+                "fields": ["email", "username", "first_name", "last_name", "date_of_birth", "password1", "password2"],
             },
         ),
     ]
@@ -89,20 +83,16 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = []
 
 
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "author")
+
+
+# Register your models here. 
 # Now register the new UserAdmin...
 admin.site.register(MyUser, UserAdmin)
+admin.site.register(Recipe, RecipeAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
 
-# Register your models here.
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ("recipes",)
-    
-class RecipeAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "description")
 
-admin.site.register(Author)
-admin.site.register(Recipe)
-
-#admin.site.register(User, UserAdmin)

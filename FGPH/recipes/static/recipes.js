@@ -14,23 +14,23 @@ function showPage(page) {
 
 
 function showSection(section) {
-    console.log("showSection function ran");
-    console.log(section);
+    console.log("showSection function: " + section);
+
     fetch(`${section}`)
     .then(response => response.text())
     .then(text => {
-        console.log(section);
         document.querySelector('#content').innerHTML = text;
+        console.log(text);
+        console.log("End of showSection.");
     });
 };
 
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('button').forEach(button => {
         button.onclick = function() {
-
             console.log("From onclick: " + this.dataset.section);
-            //showSection(display);
-            showPage(this.dataset.section);
+            showSection(this.dataset.section);
+            //showPage(this.dataset.section);
             
         }
     })
