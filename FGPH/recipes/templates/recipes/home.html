@@ -43,8 +43,11 @@
         const data = document.currentScript.dataset;
         const section = data.section;
         console.log("From script tag: " + section);
+        history.pushState({section: section}, "", `${section}`);
 
-        showSection(section);
+        document.addEventListener("DOMContentLoaded", function() {
+            showSection(section);
+        });
     </script>
 
 </head>
@@ -53,7 +56,7 @@
     <nav class="navbar bg-dark-subtle text-white">
         <div class="container-fluid">
             <div>
-                <a href="" style="text-decoration: none;">
+                <a href="{% url 'recipes:index' section %}" style="text-decoration: none;">
                     <img src="{% static 'images/logo.png' %}" class="rounded float-center position-relative m-2" width="100px">
                 </a> 
                 <label class="text-black">FOOD GUIDE PH</label>

@@ -6,32 +6,40 @@ from django.urls import reverse
 from .models import Recipe
 
 # Create your views here.
-def index(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("recipes:login"))
-    return render(request, "recipes/home.html", {
-            "section": "authentic",
-            "name": request.user.username,
-            "regions": Recipe.REGIONS.values()
-    })
+def index(request, section):
+    sections = ["authentic", "signature", "profile"]
 
-def section(request, section):
-    print("from section function: " + section)
-    print(type(section))
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
     
-    if section:
-        content = render(request, f"recipes/{section}.html", {
+    if section in sections:
+        return render(request, "recipes/home.html", {
+                "section": section,
+                "name": request.user.username,
+                "regions": Recipe.REGIONS.values()
+        })
+
+def index_blank(request):
+    return index(request, "authentic")
+
+def section(request, section):
+    sections = ["authentic", "signature", "profile"]
+    print("from section function: " + section)
+    print(type(section))
+
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("recipes:login"))
+    
+    if section in sections:
+        return render(request, f"recipes/sections/{section}.html", {
             "section": "authentic",
             "name": request.user.username,
             "regions": Recipe.REGIONS.values()
         })
         print(type(content))
-        return content
 
     else:
-        raise Http404("No such section.")
+        raise Http404("Web Page does not exist.")
 
 def login_view(request):
     if request.method == "POST":

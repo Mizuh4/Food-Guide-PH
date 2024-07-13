@@ -16,7 +16,7 @@ function showPage(page) {
 function showSection(section) {
     console.log("showSection function: " + section);
 
-    fetch(`${section}`)
+    fetch(`sections/${section}`)
     .then(response => response.text())
     .then(text => {
         document.querySelector('#content').innerHTML = text;
@@ -30,9 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         button.onclick = function() {
             console.log("From onclick: " + this.dataset.section);
             const section = this.dataset.section;
-            
             history.pushState({section: section}, "", `${section}`);
-
 
             //showPage(this.dataset.section);
             showSection(this.dataset.section);
