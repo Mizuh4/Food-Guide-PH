@@ -29,8 +29,13 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('button').forEach(button => {
         button.onclick = function() {
             console.log("From onclick: " + this.dataset.section);
-            showSection(this.dataset.section);
+            const section = this.dataset.section;
+            
+            history.pushState({section: section}, "", `${section}`);
+
+
             //showPage(this.dataset.section);
+            showSection(this.dataset.section);
             
         }
     })

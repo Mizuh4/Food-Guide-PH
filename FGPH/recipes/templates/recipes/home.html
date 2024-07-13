@@ -39,12 +39,12 @@
     </style>
     <!---->
 
-    <script data-display="{{ display }}">
+    <script data-section="{{ section }}">
         const data = document.currentScript.dataset;
-        const display = data.display;
-        console.log("From script tag: " + display);
-        
-        showSection(display)
+        const section = data.section;
+        console.log("From script tag: " + section);
+
+        showSection(section);
     </script>
 
 </head>

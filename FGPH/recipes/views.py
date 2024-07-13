@@ -10,20 +10,20 @@ def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
     return render(request, "recipes/home.html", {
-            "display": "authentic",
+            "section": "authentic",
             "name": request.user.username,
             "regions": Recipe.REGIONS.values()
     })
 
-def display(request, display):
-    print("from display function: " + display)
-    print(type(display))
+def section(request, section):
+    print("from section function: " + section)
+    print(type(section))
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
     
-    if display:
-        content = render(request, f"recipes/{display}.html", {
-            "display": "authentic",
+    if section:
+        content = render(request, f"recipes/{section}.html", {
+            "section": "authentic",
             "name": request.user.username,
             "regions": Recipe.REGIONS.values()
         })
@@ -31,7 +31,7 @@ def display(request, display):
         return content
 
     else:
-        raise Http404("No such display")
+        raise Http404("No such section.")
 
 def login_view(request):
     if request.method == "POST":
