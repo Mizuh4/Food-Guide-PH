@@ -26,7 +26,7 @@ function showSection(section) {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('button').forEach(button => {
+    document.querySelectorAll('.navButton').forEach(button => {
         button.onclick = function() {
             console.log("From onclick: " + this.dataset.section);
             const section = this.dataset.section;
