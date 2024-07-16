@@ -45,9 +45,7 @@
         console.log("From script tag: " + section);
         history.pushState({section: section}, "", `${section}`);
 
-        document.addEventListener("DOMContentLoaded", function() {
-            showSection(section);
-        });
+        showSection(section);
     </script>
 
 </head>
@@ -56,26 +54,30 @@
     <nav class="navbar bg-dark-subtle text-white">
         <div class="container-fluid">
             <div>
-                <a href="{% url 'recipes:index' section %}" style="text-decoration: none;">
-                    <img src="{% static 'images/logo.png' %}" class="rounded float-center position-relative m-2" width="100px">
-                </a> 
-                <label class="text-black">FOOD GUIDE PH</label>
+                <a style="text-decoration: none;" href="{% url 'recipes:index_blank' %}" >
+                    <img src="{% static 'images/logo.png' %}"
+                        class="rounded float-center position-relative m-2" 
+                        width="100px">
+                    <label data-section="authentic" 
+                        class="text-black">FOOD GUIDE PH</label>
+                </a>
             </div>
 
             <ul class="nav nav-underline ms-4 text-black">
                 <li class="nav-item">
-                    <button data-section="authentic" class="nav-link text-black navButton" href="">Authentic Recipes</button>
+                    <button data-section="authentic" class="nav-link text-black navButton">Authentic Recipes</button>
                 </li>
 
                 <li class="nav-item">
-                    <button data-section="signature" class="nav-link text-black navButton" href="">Signature Recipes</button>
+                    <button data-section="signature" class="nav-link text-black navButton">Signature Recipes</button>
                 </li>
 
                 <li class="nav-item">
-                    <button data-section="profile" class="nav-link text-black navButton" href="">Profile</button>
+                    <button data-section="profile" class="nav-link text-black navButton">Profile</button>
                 </li>  
                     
-                <form class="d-flex" role="search">
+                <form class="d-flex" role="search" method="post">
+                    {% csrf_token %}
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>

@@ -6,9 +6,12 @@ from django.urls import reverse
 from .models import Recipe
 
 # Create your views here.
-def index(request, section):
-    sections = ["authentic", "signature", "profile"]
+sections = ["authentic", "signature", "profile", "cookbooks", "settings"]
 
+
+def index(request, section):
+    global sections
+    
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("recipes:login"))
     
@@ -18,12 +21,14 @@ def index(request, section):
                 "name": request.user.username,
                 "regions": Recipe.REGIONS.values()
         })
+    else:
+        return index_blank(request)
 
 def index_blank(request):
     return index(request, "authentic")
 
 def section(request, section):
-    sections = ["authentic", "signature", "profile"]
+    global sections
     print("from section function: " + section)
     print(type(section))
 
@@ -32,7 +37,7 @@ def section(request, section):
     
     if section in sections:
         return render(request, f"recipes/sections/{section}.html", {
-            "section": "authentic",
+            "section": section,
             "name": request.user.username,
             "regions": Recipe.REGIONS.values()
         })

@@ -19,13 +19,13 @@ function showSection(section) {
     fetch(`sections/${section}`)
     .then(response => response.text())
     .then(text => {
-        document.querySelector('#content').innerHTML = text;
-        console.log(text);
+        document.querySelector('#content').innerHTML = text;    
         console.log("End of showSection.");
+        updateState();
     });
 };
 
-document.addEventListener("DOMContentLoaded", function() {
+function updateState() {
     document.querySelectorAll('.navButton').forEach(button => {
         button.onclick = function() {
             console.log("From onclick: " + this.dataset.section);
@@ -37,4 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
         }
     })
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("ContentLoaded");
+    updateState();
 })

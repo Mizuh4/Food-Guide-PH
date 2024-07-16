@@ -35,7 +35,6 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 class MyUser(AbstractBaseUser):
     email = models.EmailField(
         verbose_name="email address",
@@ -74,7 +73,6 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 
 # Create your models here.
-
 class Recipe(models.Model):
     REGIONS = {
         "RegionI" : "Ilocos Region",
@@ -92,9 +90,11 @@ class Recipe(models.Model):
     region = models.CharField(max_length=64, choices=REGIONS)
     author = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="recipes")
     ingredients = models.JSONField(blank=True)
+    steps = models.JSONField(blank=True)
 
     def __str__(self):
         return f"{self.name}, description: {self.description}, region: {self.region}, author: {self.author.username}, ingredients: {self.ingredients}"
+
 '''
 recipe = Recipe.objects.all()
 recipe = Recipe.objects.first()

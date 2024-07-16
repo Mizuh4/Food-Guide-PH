@@ -4,18 +4,19 @@
 <div class="lead text-center text-white">
     <img src="{% static 'images/avatar.png' %}" class="rounded-center mt-2" width="100px">
                         
-        <div class="my-3">
-            <label class="my-2">{{ name }}</label>  
-            <ul class="me-4 mt-3">
-            <a href="Cookbooks.html"><button class="cookbooks">Cookbooks</button></a>
-            </ul>
-            <ul class="me-4 mb-5 pb-4">
-            <a href="AccountSettings.html"><button class="setting">Account Settings</button></a>
-            </ul>
+    <div class="my-3">
+        <label class="my-2">{{ name }}</label>
+        
+        <div style="margin-bottom: 1rem;">
+            <button data-section="cookbooks" class="navButton">Cookbooks</button>
+        </div>
 
-            <div class="lead text-center ms-2 mt-4">
-                <a class="btn btn-outline-primary " href="{% url 'recipes:logout' %}">Log Out</a>
+        <div>
+            <button data-section="settings" class="navButton">Settings</button>
+        </div>
 
-            </div>
-        </div>                       
+        <div class="lead text-center ms-2 mt-4">
+            <a href="{% url 'recipes:logout' %}" class="btn btn-outline-primary" >Log Out</a>
+        </div>
+    </div>                       
 </div>
