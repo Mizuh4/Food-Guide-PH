@@ -4,59 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <Title>FOOD GUIDE PH</Title>
+    {% include 'recipes/styles.html' %}
+</head>
 
-    {% include 'recipes/links.html' %}
-    
+<body class="bg-black">
+    {% include 'recipes/sections/navbar.html' %}
+
+    <div id="content"></div>
+
+    {% include 'recipes/scripts.html' %}
     <script data-section="{{ section }}">
         const data = document.currentScript.dataset;
         const section = data.section;
         console.log("From script tag: " + section);
         history.pushState({section: section}, "", `${section}`);
-
         showSection(section);
     </script>
-
-</head>
-
-<body class="bg-black">
-    <nav class="navbar bg-dark-subtle text-white">
-        <div class="container-fluid">
-            <div>
-                <a style="text-decoration: none;" href="{% url 'recipes:index_blank' %}" >
-                    <img src="{% static 'images/logo.png' %}"
-                        class="rounded float-center position-relative m-2" 
-                        width="100px">
-                    <label data-section="authentic" 
-                        class="text-black">FOOD GUIDE PH</label>
-                </a>
-            </div>
-
-            <ul class="nav nav-underline ms-4 text-black">
-                <li class="nav-item">
-                    <button data-section="authentic" class="nav-link text-black navButton">Authentic Recipes</button>
-                </li>
-
-                <li class="nav-item">
-                    <button data-section="signature" class="nav-link text-black navButton">Signature Recipes</button>
-                </li>
-
-                <li class="nav-item">
-                    <button data-section="profile" class="nav-link text-black navButton">Profile</button>
-                </li>  
-                    
-                <form class="d-flex" role="search" method="post">
-                    {% csrf_token %}
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </ul>
-        </div>
-    </nav>
-</div>
-
-<div id="content">
-</div>
-
 </body>
 </html>
 

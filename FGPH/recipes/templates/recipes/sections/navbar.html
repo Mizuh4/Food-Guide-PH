@@ -1,0 +1,87 @@
+
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="text-decoration: none;" href="{% url 'recipes:index_blank' %}">
+            <img src="{% static 'images/logo.png' %}"
+                class="rounded float-center position-relative m-2" 
+                width="100px">Food Guide PH
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-underline ms-auto mb-2 mb-lg-0 pe-3">
+
+                <li class="nav-item">
+                    <button data-section="authentic" class="nav-link navButton">Authentic</button>
+                </li>
+
+                <li class="nav-item">
+                    <button data-section="signature" class="nav-link navButton">Signature</button>
+                </li>
+
+                <li class="nav-item">
+                    <button data-section="profile" class="nav-link navButton">Profile</button>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filters
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Popular</a></li>
+                        <li><a class="dropdown-item" href="#">Recommended</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">No Filter</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Old Nav
+<nav class="navbar bg-dark-subtle text-white">
+    <div class="container-fluid">
+        <div>
+            <a style="text-decoration: none;" href="{% url 'recipes:index_blank' %}" >
+                <img src="{% static 'images/logo.png' %}"
+                    class="rounded float-center position-relative m-2" 
+                    width="100px">
+                <label data-section="authentic" 
+                    class="text-black">FOOD GUIDE PH</label>
+            </a>
+        </div>
+
+        <ul class="nav nav-underline ms-4 text-black">
+            <li class="nav-item">
+                <button data-section="authentic" class="nav-link text-black navButton">Authentic Recipes</button>
+            </li>
+
+            <li class="nav-item">
+                <button data-section="signature" class="nav-link text-black navButton">Signature Recipes</button>
+            </li>
+
+            <li class="nav-item">
+                <button data-section="profile" class="nav-link text-black navButton">Profile</button>
+            </li>  
+                
+            <form class="d-flex" role="search" method="post">
+                {% csrf_token %}
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+-->
