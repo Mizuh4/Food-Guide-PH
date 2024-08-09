@@ -3,18 +3,25 @@ window.onpopstate = function(event) {
     showSection(event.state.section);
 }
 
-function showPage(page) {
+/*function showPage(page) {
     console.log("From showPage: " + page);
     
     document.querySelectorAll('section').forEach(section => {
         section.style.display = 'none';
     });
     document.querySelector(`#${page}`).style.display = "block";
-};
-
+};*/
 
 function showSection(section) {
     console.log("showSection function: " + section);
+    document.querySelectorAll('.navButton').forEach(button => {
+        var classes = ['active']
+        if (section === button.dataset.section) {
+            button.classList.add(classes)
+        } else {
+            button.classList.remove(classes)
+        }
+    })
 
     fetch(`sections/${section}`)
     .then(response => response.text())
