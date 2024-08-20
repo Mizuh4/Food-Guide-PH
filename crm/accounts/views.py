@@ -27,11 +27,11 @@ def register(request):
             user = form.save()
             username = form.cleaned_data.get('username')
 
-            group = Group.objects.get(name='customer')
+            '''group = Group.objects.get(name='customer')
             user.groups.add(group)
             Customer.objects.create(
                 user=user,
-            )
+            )'''
 
             messages.success(request, f'Account was created for {username}')
             return HttpResponseRedirect(reverse('accounts:login'))
@@ -94,8 +94,14 @@ def userPage(request):
 @login_required(login_url='accounts:login')
 @allowed_users(allowed_roles=['customer'])
 def accountSettings(request):
-    user = request.user
-    form = CustomerForm(instance=user)
+    customer = request.user.customer
+    form = CustomerForm(instance=customer)
+    
+    if request.method == "POST":
+        form = CustomerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid:
+            form.save()
+
     context = {'form': form}
     return render(request, 'accounts/accounts_settings.html', context)
 
