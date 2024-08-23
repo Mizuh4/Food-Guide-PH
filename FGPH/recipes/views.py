@@ -6,7 +6,7 @@ from django.urls import reverse
 from .models import Recipe
 
 # Create your views here.
-sections = ["authentic", "signature", "profile", "cookbooks", "settings"]
+sections = ["authentic", "signature", "Content", "profile", "cookbooks", "settings"]
 
 
 def index(request, section):

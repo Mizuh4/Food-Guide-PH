@@ -7,7 +7,7 @@ const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]
        
 <div class="lead text-center text-white position-relative">
         <label class="lead text-center text-white"><h5>Content</h5></label>
-    </div>
+
 
         <h5 class="text-white">Batchoy Tagalog<button type="button" class="btn btn-secondary text-end"
             data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" 
@@ -30,7 +30,7 @@ const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]
           </button></h5>
         <p class="text-white">Batchoy Tagalog makes a great main dish with steamed rice for lunch or dinner. 
         It's a hearty, flavorful comfort food that's sure to take the chill off cold, rainy days.</p>
-        <img src="batchoy-tagalog-3-730x973.jpg" width="300px" height="300px">
+        <img src="{% static 'images/batchoy-tagalog-3-730x973.jpg'%}" width="300px" height="300px">
         
         
         <label class="text-white"><h5>Instructions</h5></label>
@@ -51,3 +51,4 @@ const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]
                 Turn off the heat and cover to allow residual steam to cook leaves. 
                 Serve hot.</li>
             </ol>
+</div>
