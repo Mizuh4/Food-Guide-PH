@@ -95,6 +95,9 @@ class Recipe(models.Model):
     def __str__(self):
         return f"{self.name}, description: {self.description}, region: {self.region}, author: {self.author.username}, ingredients: {self.ingredients}"
 
+class Customer(models.Model):
+    
+
 '''
 recipe = Recipe.objects.all()
 recipe = Recipe.objects.first()

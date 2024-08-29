@@ -14,7 +14,7 @@ window.onpopstate = function(event) {
 
 function showSection(section) {
     console.log("showSection function: " + section);
-    document.querySelectorAll('.navButton').forEach(button => {
+    document.querySelectorAll('.navButton, .contentButton').forEach(button => {
         var classes = ['active']
         if (section === button.dataset.section) {
             button.classList.add(classes)
@@ -33,7 +33,7 @@ function showSection(section) {
 };
 
 function updateState() {
-    document.querySelectorAll('.navButton').forEach(button => {
+    document.querySelectorAll('.navButton, .contentButton').forEach(button => {
         button.onclick = function() {
             console.log("From onclick: " + this.dataset.section);
             const section = this.dataset.section;
