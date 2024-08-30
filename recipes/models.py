@@ -98,10 +98,10 @@ class Recipe(models.Model):
 class Customer(models.Model):
     
 
-'''
-recipe = Recipe.objects.all()
-recipe = Recipe.objects.first()
-user = MyUser.objects.get(email="gavila_02@mtc.edu.ph")
-region = Recipe.REGIONS["RegionI"]
-recipe = Recipe(name="Pinakbet", description="Has vegetables.", region=region, author=user, ingredients="")
-'''
+    '''
+    recipe = Recipe.objects.all()
+    recipe = Recipe.objects.first()
+    user = MyUser.objects.get(email="gavila_02@mtc.edu.ph")
+    region = Recipe.REGIONS["RegionI"]
+    recipe = Recipe(name="Pinakbet", description="Has vegetables.", region=region, author=user, ingredients="")
+    '''
