@@ -5,50 +5,123 @@ const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
        add before js -->  
        
-<div class="lead text-center text-white position-relative">
-        <label class="lead text-center text-white"><h5>Content</h5></label>
+       <style>
+        h5 {
+            margin-left: auto;
+            margin-right: auto;
+        }
 
+        li {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    
+        h5 {
+            border: 0px solid white;
+        }
+    
+    </style>
 
-        <h5 class="text-white">Batchoy Tagalog<button type="button" class="btn btn-secondary text-end"
-            data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" 
-            data-bs-content=" Servings: 
+<div class="container-fluid text-white text-center">
+    <nav class="navbar">
+        <i class="bi bi-arrow-left"><use xlink:href="#arrow-left"></use></i>
+    
+    <button class="navbar-toggler bg-dark-subtle" type="button" data-bs-toggle="offcanvas" 
+    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Ingredients</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="Batchoy Tagalog-body">
+            <p>Servings:</p>
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-1">
+              <li class="nav-item">
                 1 tablespoon canola oil
+              </li>
+
+              <li class="nav-item">
                 1 onion, peeled and sliced thinly
+              </li>
+
+              <li class="nav-item">
                 4 cloves garlic, peeled and minced
+              </li>
+
+              <li class="nav-item">
                 2 thumb-sized ginger, peeled and minced
+              </li>
+
+              <li class="nav-item">
                 ½ pound pork tenderloin, cut into strips
+              </li>
+
+              <li class="nav-item">
                 ¼ pound pork heart, about 1 piece, cut into thin strips
+              </li>
+
+              <li class="nav-item">
                 2 tablespoons fish sauce
+              </li>
+
+              <li class="nav-item">
                 6 cups water
+              </li>
+
+              <li class="nav-item">
                 ¼ pound pork liver, cut into thin strips
+              </li>
+
+              <li class="nav-item">
                 ¼ pound coagulated blood, drained and cut into cubes
+              </li>
+
+              <li class="nav-item">
                 salt and pepper to taste
+              </li>
+
+              <li class="nav-item">
                 2 ounces miswa
-                1 bunch fresh chili leaves, stems trimmed">
-            
-            Ingredients
-          </button></h5>
-        <p class="text-white">Batchoy Tagalog makes a great main dish with steamed rice for lunch or dinner. 
-        It's a hearty, flavorful comfort food that's sure to take the chill off cold, rainy days.</p>
-        <img src="{% static 'images/batchoy-tagalog-3-730x973.jpg'%}" width="300px" height="300px">
-        
-        
-        <label class="text-white"><h5>Instructions</h5></label>
-        <ol class="text-white">
-            <li> In a large pot over medium heat, heat oil. Add onions, garlic, and ginger, and cook until softened.</li>
-            <li> Add pork and heart. Cook, stirring occasionally, until lightly browned.</li>
-            <li> Add fish sauce and cook for about 2 to 3 minutes.</li>
-            <li> Add water and bring to a boil, skimming scum that floats on top.</li>
-            <li> Lower heat, cover, and continue to cook for about 15 to 20 minutes or until meat is tender.</li>
-            <li> Increase heat to high and bring the broth to a rolling boil.</li>
-            <li> Add pork liver and cook, without stirring, for about 2 to 3 minutes. 
-                Stir and continue to cook for another 2 to 3 minutes.</li>
-            <li> Add coagulated blood and cook, without stirring, for about 2 to 3 minutes. 
-                Stir and continue to cook for about 8 to 10 minutes.</li>
-            <li> Season with salt and pepper to taste.</li>
-            <li> Add miswa and continue to cook for 1 to 2 minutes.</li>
-            <li> Add chili leaves, pressing down into the broth. 
-                Turn off the heat and cover to allow residual steam to cook leaves. 
-                Serve hot.</li>
-            </ol>
+              </li>
+              
+              <li class="nav-item">
+                1 bunch fresh chili leaves, stems trimmed"
+              </li>
+            </ul>
+          </div>
+
+        </div>
+    </nav>
 </div>
+
+        <div class="container-fluid text-white justify-content-center">
+            <h5>Batchoy Tagalog</h5>
+        <p class="text-white">Batchoy Tagalog makes a great main dish with steamed rice for lunch or dinner.
+        It's a hearty, flavorful comfort food that's sure to take the chill off cold, rainy days.</p>        
+        </div>
+
+        <div class="text-center">
+        <img src="{% static 'images/batchoy-tagalog-3-730x973.jpg'%}" width="300px" height="300px">
+        <br>
+        <label class="text-white"><h5>Instructions</h5></label>
+        <br>
+            <label class="text-white">1. In a large pot over medium heat, heat oil. Add onions, garlic, and ginger, and cook until softened.</label><br>
+            <label class="text-white">2. Add pork and heart. Cook, stirring occasionally, until lightly browned.</label><br>
+            <label class="text-white">3. Add fish sauce and cook for about 2 to 3 minutes.</label><br>
+            <label class="text-white">4. Add water and bring to a boil, skimming scum that floats on top.</label><br>
+            <label class="text-white">5. Lower heat, cover, and continue to cook for about 15 to 20 minutes or until meat is tender.</label><br>
+            <label class="text-white">6. Increase heat to high and bring the broth to a rolling boil.</label><br>
+            <label class="text-white">7. Add pork liver and cook, without stirring, for about 2 to 3 minutes. 
+                Stir and continue to cook for another 2 to 3 minutes.</label><br>
+            <label class="text-white">8. Add coagulated blood and cook, without stirring, for about 2 to 3 minutes. 
+                Stir and continue to cook for about 8 to 10 minutes.</label><br>
+            <label class="text-white">9. Season with salt and pepper to taste.</label><br>
+            <label class="text-white">10.Add miswa and continue to cook for 1 to 2 minutes.</label><br>
+            <label class="text-white">11. Add chili leaves, pressing down into the broth. 
+                Turn off the heat and cover to allow residual steam to cook leaves. 
+                Serve hot. </label>
+        </div>
