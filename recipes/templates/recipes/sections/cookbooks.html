@@ -72,7 +72,8 @@
 
 </div>
 
-<div class="lead text-end pt-3 pe-4">
+<div class="lead text-end pt-3 pe-4 pb-3">
+    
     <button class="btn btn-outline-primary rounded-4" type="button" data-bs-toggle="offcanvas" 
     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add</button>
 
@@ -82,6 +83,23 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
     <div class="offcanvas-body">
-            
+        <div class="input-group">
+            <span class="input-group-text">Username</span>
+            <input type="text" aria-label="Username" class="form-control">
+          </div>
+
+          <div class="input-group mt-5">
+            <input type="file" class="form-control" id="inputGroupFile02">
+          </div>
+
+          <div class="input-group mt-5">
+            <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="mt-5">
+            <button type="button" class="btn btn-outline-primary">Upload</button>
+          </div>
     </div>
 </div>
+    
